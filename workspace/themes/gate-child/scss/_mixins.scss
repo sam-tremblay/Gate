@@ -1,0 +1,31 @@
+@mixin break($media) {
+
+  @if $media == xxsmall {
+    @media only screen and (max-width: $break-xxs) { @content; }
+  }
+
+  @if $media == xsmall {
+    @media only screen and (max-width: $break-xs) { @content; }
+  }
+
+  @if $media == small {
+    @media only screen and (max-width: $break-s) { @content; }
+  }
+
+  @if $media == medium {
+    @media only screen and (max-width: $break-m) { @content; }
+  }
+
+  @if $media == large {
+    @media only screen and (max-width: $break-l) { @content; }
+  }
+
+  @if $media == xlarge {
+    @media only screen and (max-width: $break-xl) { @content; }
+  }
+
+  @if $media == xxlarge {
+    @media only screen and (max-width: $break-xxl) { @content; }
+  }
+
+}

@@ -1,0 +1,14 @@
+.github/
+README.md
+LICENSE
+node_modules/
+final/files/*
+!final/files/index.php
+
+/bitbucket-pipelines.yml
+workspace/wp-config.php
+
+
+final/wp-config.php
+
+final/frame/debug.log
