@@ -2,7 +2,7 @@
 
 	class gateManageDatas{
 
-		public $acf_path;
+		private $acf_path;
 
 		function __construct(){
 
