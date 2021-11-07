@@ -1,6 +1,4 @@
 .github/
-README.md
-LICENSE
 node_modules/
 final/files/*
 !final/files/index.php
