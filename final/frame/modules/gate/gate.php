@@ -13,7 +13,7 @@ Text Domain: gcore
 if (!defined( 'ABSPATH' )) exit;
 
 
-define('GATE_PLUGIN_VERSION', '4.1');
+define('GATE_PLUGIN_VERSION', '4.2');
 
 
 if (!class_exists('gateCore_plug')){
