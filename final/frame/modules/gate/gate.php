@@ -26,6 +26,7 @@ if (!class_exists('gateCore_plug')){
 
 		// class components
 		static $gateCore_classComponents = array(
+			"class/update.php",
 			"class/datas.php",
 			"class/connect.php",
 			"class/backend.php",
