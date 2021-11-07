@@ -3,7 +3,7 @@
 Plugin Name: Gate
 Plugin URI: https://gateforwp.com/
 Description: Accélérez votre développement avec des outils étoffés et offrez à vos clients une administration professionnelle.
-Version: 4.1
+Version: 4.2
 Author: deuxparquatre inc.
 Author URI: https://deuxparquatre.com/
 Copyright: deuxparquatre
