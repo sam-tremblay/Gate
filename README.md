@@ -1,18 +1,36 @@
-Documentation: https://docs.gateforwp.com/
+# Gate for WordPress
+## _Your next installation WordPress._
 
-Lisez [les communications](https://docs.gateforwp.com/communications) afin de savoir ce qui s'envient avec Gate.
+Gate is an open and evolutive project that help devs to start and deliver good WordPress Stuffs
 
-# Qu'est-ce que Gate pour WordPress?
-Gate pour WordPress est une installation WP complètement revisitée qui a pour objectif de raccourcir le temps de développement, de favoriser l'utilisation du Core WordPress en proposant des outils étoffés comme la gestion des Custom Post Type par exemple et d'optimiser les sources développées en proposant des solutions Next Generation (JS ES5+, SCSS, nodeJs, Gulp).
+## Features
+- Write animations with Gsap.
+- Start Page Transition, Smooth Scrolling and Text Animation when appear in screen.
+- Create professional admin, optimize the codes and more, magic!
+- Create Custom Post Types and their taxonomies quickly
+- Manage some repeat situations like menu locations, ACF Options Pages, SEO management, etc.
+- Work with Next Generation of codes with Node and Gulp-babel
 
-En combinant ces objectifs grâce à ses outils, Gate amène les développeurs à créer des administrations propres et instinctives, mais aussi à offrir des livrables performants plus rapidement que prévu!
 
-## Des éléments qui font la force de Gate:
-- [Son installation facile](https://docs.gateforwp.com/installation)
-- [Sa structure polyvalente](https://docs.gateforwp.com/gulp-et-gate)
-- [Ses sources et outils intégrés](https://docs.gateforwp.com/gulp-et-gate/gate-ses-sources-et-outils-integres)
-- [Ses fonctions JS/jQuery](https://docs.gateforwp.com/codex/les-fonctions-js-jquery) qui vous permettent:
-  - [De faire des transitions entre les pages](https://docs.gateforwp.com/codex/les-fonctions-js-jquery#transition-de-page)
-  - [De jouer avec le Smooth Scroll de Locomotive](https://docs.gateforwp.com/codex/les-fonctions-js-jquery#smooth-scroll)
-  - [D'animer les textes lorsqu'ils tombent dans l'écran](https://docs.gateforwp.com/codex/les-fonctions-js-jquery#animation-des-textes)
-- [Ses fonctions PHP](https://docs.gateforwp.com/codex/les-fonctions-php)
+## Requirements per version
+#### Gate v4.1
+| Name | Version |
+| ------ | ------ |
+| Node | 17.0.1 |
+| npm | 8.1.2 |
+
+## How start to work
+```sh
+# Add node modules
+npm i
+# Start whatching
+gulp
+# Build system, compress fonts & images
+gulp build
+```
+See documentation here: https://docs.gateforwp.com/
+
+## License
+MIT
+
+**Cheers** 🍻
