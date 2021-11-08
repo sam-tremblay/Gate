@@ -23,7 +23,7 @@ Gate is an open and evolutive project that help devs to start and deliver good W
 ```sh
 # Add node modules
 npm i
-# Start whatching
+# Start watching
 gulp
 # Build system, compress fonts & images
 gulp build
