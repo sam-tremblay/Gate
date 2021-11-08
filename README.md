@@ -4,15 +4,15 @@
 Gate is an open and evolutive project that help devs to start and deliver good WordPress Stuffs
 
 ## Features
-- Write animations with Gsap.
-- Start Page Transition, Smooth Scrolling and Text Animation when appear in screen.
-- Create professional admin, optimize the codes and more, magic!
+- Write animations with Gsap
+- Start Page Transition, Smooth Scrolling and Text Animation when appear in screen
+- Create professional and instinctive Admin Panels
 - Create Custom Post Types and their taxonomies quickly
 - Manage some repeat situations like menu locations, ACF Options Pages, SEO management, etc.
 - Work with Next Generation of codes with Node and Gulp-babel
 
 
-## Requirements per version
+## Requirements per Gate version
 #### Gate v4.1
 | Name | Version |
 | ------ | ------ |
@@ -26,7 +26,7 @@ npm i
 # Start watching
 gulp
 # Build system, compress fonts & images
-gulp build
+gulp prod
 ```
 See documentation here: https://docs.gateforwp.com/
 
