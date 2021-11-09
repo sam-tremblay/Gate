@@ -145,7 +145,10 @@
 
 			echo $html;
 
-			if(gc::field('gate_in_construction') === 'deactivate' && !is_front_page() && !current_user_can('administrator')){
+			$user = wp_get_current_user();
+			$roleArray = $user->roles;
+			$userRole = isset($roleArray[0]) ? $roleArray[0] : '';
+			if(gc::field('gate_in_construction') === 'activate' && !is_front_page() && !in_array($userRole, ['administrator', 'developer'])){
 				header('location: ' . get_bloginfo('url'));
 				exit;
 			}
