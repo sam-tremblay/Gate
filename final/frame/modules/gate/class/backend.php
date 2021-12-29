@@ -304,6 +304,23 @@
 
 
 				/*
+				* On ajoute le sous onglet des Rôles
+				*/
+				$args = array(
+					'id' => 'configs-roles',
+					'title' => 'Rôles',
+					'href' => $admin_url . 'edit.php?post_type=gate_role',
+					'parent' => 'gate-dev',
+					'meta' => array(
+						'class' => 'configs-roles',
+						'title' => 'Configurations des rôles'
+					)
+				);
+				if(is_plugin_active('advanced-custom-fields-pro/acf.php'))
+					$wp_admin_bar->add_node($args);
+
+
+				/*
 				* On ajoute le sous onglet themes
 				*/
 				$args = array(
