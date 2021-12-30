@@ -20,6 +20,99 @@
 				});
 			}
 
+
+			/*
+			* Add content before Roles List
+			*/
+			add_filter('views_edit-gate_role', function($views){
+				
+				$roles = json_decode(file_get_contents(WP_PLUGIN_DIR . '/gate/datas/default-roles.json'));
+
+				$html = '<style type="text/css">#basic-roles ul{display: flex; alig-items: center;}#basic-roles ul li+li{margin-left: 25px;}</style>';
+
+				$html .= '<div class="gate-configs">';
+					
+					$html .= '<div id="basic-roles">';
+						$html .= '<h3>Supprimer les rôles par défaut</h3>';
+						$html .= '<ul>';
+						foreach($roles as $role_key => $role_value){
+
+							$readonly = $role_value->required ? ' readonly disabled' : null;
+							$checked = $role_value->selected ? ' checked' : null;
+							$html .= '<li data-is="'. $role_key .'"><label><input type="checkbox" id="role-'. $role_key .'" name="role-'. $role_key .'" value="1" class="" autocomplete="off"'. $checked . $readonly .'><span class="message">'. $role_value->name .'</span></label></li>';
+						}
+						$html .= '</ul>';
+					$html .= '</div>';
+				$html .= '</div>';
+
+				$html .= '<h2>Liste de vos rôles</h2>';
+
+				$html .= '<script type="text/javascript">
+					jQuery(document).ready(function($){
+						$("#basic-roles ul li input").on("change", function(){
+							var is = $(this).parents("li").data("is");
+							$.post(window.location.href, {
+								activate: "edit-role-to-delete",
+								is: is,
+								checked: ($(this).is(":checked") ? "true" : "false")
+							});
+						});
+					});
+				</script>';
+
+				echo $html;
+   				return $views;
+			});
+
+
+			add_action('admin_init', function(){
+				global $wp_roles;
+
+		    	$all_roles = $wp_roles->roles;
+		    	//print_r($all_roles);
+
+				$reset = isset($_GET['roles']) ? $_GET['roles'] : null;
+				$no_reset = array(
+					'administrator',
+					'editor',
+					'author',
+					'contributor',
+					'subscriber',
+					'developer',
+				);
+				if($reset === 'reset'){
+					foreach($all_roles as $k => $v){
+						if(!in_array($k, $no_reset))
+							remove_role($k);
+			    	}
+				}
+
+				/*
+				* Default Role to delete
+				*/
+				if(isset($_POST['activate']) && $_POST['activate'] === 'edit-role-to-delete'){
+
+					if (!function_exists( 'populate_roles' ))
+						require_once( ABSPATH . 'wp-admin/includes/schema.php' );
+
+					populate_roles();
+
+					$is = $_POST['is'];
+					$checked = $_POST['checked'];
+					$roles = json_decode(file_get_contents(WP_PLUGIN_DIR . '/gate/datas/default-roles.json'));
+					$roles->{$is}->selected = $checked === 'true' ? true : false;
+					file_put_contents(WP_PLUGIN_DIR . '/gate/datas/default-roles.json', json_encode($roles));
+
+					foreach ($roles as $role_key => $role_value) {
+						if($role_value->selected)
+							remove_role($role_key);
+					}
+
+					exit;
+				}
+
+			});
+
 		}
 
 
