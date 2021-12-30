@@ -8,7 +8,7 @@ Gate is an open and evolutive project that help devs to start and deliver good W
 - Start Page Transition, Smooth Scrolling and Text Animation when appear in screen
 - Create professional and instinctive Admin Panels
 - Create Custom Post Types and their taxonomies quickly
-- Create Roles and delete defaults
+- Remove default roles and create new ones
 - Manage some repeat situations like menu locations, ACF Options Pages, SEO management, etc.
 - Work with Next Generation of codes with Node and Gulp-babel
 
