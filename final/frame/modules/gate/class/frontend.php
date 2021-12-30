@@ -66,7 +66,7 @@
 			if(gs::desc())
 				$html .= '<meta name="description" content="'. gs::desc() .'">';
 			
-			if(gs::index())
+			if(!gs::index())
 				$html .= '<meta name="robots" content="noindex,follow">';
 
 			if(gs::title_sn())
