@@ -8,6 +8,7 @@ Gate is an open and evolutive project that help devs to start and deliver good W
 - Start Page Transition, Smooth Scrolling and Text Animation when appear in screen
 - Create professional and instinctive Admin Panels
 - Create Custom Post Types and their taxonomies quickly
+- Create Roles and delete defaults
 - Manage some repeat situations like menu locations, ACF Options Pages, SEO management, etc.
 - Work with Next Generation of codes with Node and Gulp-babel
 
@@ -23,6 +24,8 @@ Gate is an open and evolutive project that help devs to start and deliver good W
 ```sh
 # Add node modules
 npm i
+# Install Gulp globally if has not been done
+npm i gulp -g
 # Start watching
 gulp
 # Build system, compress fonts & images
