@@ -46,10 +46,6 @@
 			register_post_type("gate_role", $args);
 		}
 
-		function acf(){
-
-		}
-
 		function add(){
 			global $wp_roles;
 
@@ -62,6 +58,23 @@
 
 			// Add
 			$wp_roles->add_role('developer', 'Dev', $admin_role->capabilities);
+
+
+			/*
+			* Take Roles created with manager and add it to WordPress
+			*/
+			$roles = gc::cpt('gate_role');
+			if($roles->have_posts()){
+				while($roles->have_posts()) : $roles->the_post();
+					$caps = !empty(gc::field('capabilities')) ? array_filter(gc::field('capabilities')) : [];
+					add_role(gc::field('labels_slug'), gc::field('labels_name'), $caps);
+				endwhile;
+			}
+
+		}
+
+
+		function acf(){
 
 		}
 		
