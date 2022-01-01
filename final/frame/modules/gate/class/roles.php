@@ -37,9 +37,8 @@
 						$html .= '<ul>';
 						foreach($roles as $role_key => $role_value){
 
-							$readonly = $role_value->required ? ' readonly disabled' : null;
 							$checked = $role_value->selected ? ' checked' : null;
-							$html .= '<li data-is="'. $role_key .'"><label><input type="checkbox" id="role-'. $role_key .'" name="role-'. $role_key .'" value="1" class="" autocomplete="off"'. $checked . $readonly .'><span class="message">'. $role_value->name .'</span></label></li>';
+							$html .= '<li data-is="'. $role_key .'"><label><input type="checkbox" id="role-'. $role_key .'" name="role-'. $role_key .'" value="1" class="" autocomplete="off"'. $checked .'><span class="message">'. $role_value->name .'</span></label></li>';
 						}
 						$html .= '</ul>';
 					$html .= '</div>';
