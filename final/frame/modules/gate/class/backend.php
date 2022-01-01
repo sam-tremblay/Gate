@@ -4,6 +4,42 @@
 
 		function __construct(){
 
+			/*
+			* Enqueue Script to admin
+			*/
+			add_action('admin_enqueue_scripts', function(){
+
+        		$screen = get_current_screen()->post_type;
+
+        		$sys_infos = [
+        			'post_type' => ($screen ? $screen : false)
+        		];
+
+        		/*
+        		* Add Sortable system if Post Type has page-attributes supported
+        		*/
+        		if($sys_infos['post_type'] && post_type_supports($sys_infos['post_type'], 'page-attributes')){
+        			wp_enqueue_script('jquery-ui-sortable');
+        			wp_enqueue_script('sort-gate', plugin_dir_url( __FILE__ ) .'../assets/js/sortable.js');
+        			wp_localize_script('sort-gate', 'SORT', $sys_infos);
+        		}
+			});
+
+
+			/*
+			* On Sorting
+			*/
+			add_action('wp_ajax_update-post-type-order', [$this, 'sorting_system']);
+
+
+			/*
+			* For Sorting, force all post in one line
+			*/
+			add_filter('edit_posts_per_page', function(){
+				if(is_admin())
+					return 999;
+			});
+
 
 			/*
 			* Admin init
@@ -17,8 +53,9 @@
 				* Akismet Plugin, post, page, comment, Gutenburg etc.
 				*/
 				$this->remove_basics();
-
 			});
+
+
 
 
 			/*
@@ -58,7 +95,9 @@
 			/*
 			* Add Styles
 			*/
-			add_action('admin_head', [$this, 'admin_styles']);
+			add_action('admin_head', function(){
+        		$this->admin_styles();
+			});
 
 
 			/*
@@ -1438,6 +1477,24 @@
 				'description' => '',
 				'modified' => 16359283999,
 			));
+		}
+
+
+		function sorting_system(){
+
+			$post_type = $_POST['post_type'];
+			$new_list = $_POST['new_list'];
+			$paged = $_POST['paged'];
+
+			
+			foreach ($new_list as $key => $post_id) {
+				wp_update_post([
+					'ID' => $post_id,
+					'menu_order' => $key
+				]);
+			}
+			
+			exit;
 		}
 
 	}
