@@ -1484,7 +1484,6 @@
 
 			$post_type = $_POST['post_type'];
 			$new_list = $_POST['new_list'];
-			$paged = $_POST['paged'];
 
 			
 			foreach ($new_list as $key => $post_id) {
