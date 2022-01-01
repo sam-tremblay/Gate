@@ -9,6 +9,7 @@ Gate is an open and evolutive project that help devs to start and deliver good W
 - Create professional and instinctive Admin Panels
 - Create Custom Post Types and their taxonomies quickly
 - Remove default roles and create new ones
+- Sort Post Types with Drag & Drop (for now, work good only if all posts is on one page in admin panel)
 - Manage some repeat situations like menu locations, ACF Options Pages, SEO management, etc.
 - Work with Next Generation of codes with Node and Gulp-babel
 
