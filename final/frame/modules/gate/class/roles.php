@@ -89,7 +89,7 @@
 				/*
 				* Default Role to delete
 				*/
-				if(isset($_POST['activate']) && $_POST['activate'] === 'edit-role-to-delete'){
+				if(isset($_POST['activate']) && $_POST['activate'] === 'edit-role-to-delete' && current_user_can('manage_options')){
 
 					if (!function_exists( 'populate_roles' ))
 						require_once( ABSPATH . 'wp-admin/includes/schema.php' );
