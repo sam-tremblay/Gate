@@ -9,16 +9,18 @@
 			*/
 			add_action('admin_enqueue_scripts', function(){
 
-        		$screen = get_current_screen()->post_type;
+        		$post_type = get_current_screen()->post_type;
+        		$taxonomy = get_current_screen()->taxonomy;
 
         		$sys_infos = [
-        			'post_type' => ($screen ? $screen : false)
+        			'post_type' => $post_type,
+        			'taxonomy' => $taxonomy
         		];
 
         		/*
-        		* Add Sortable system if Post Type has page-attributes supported
+        		* Add Sortable system for Post Type if Post Type has page-attributes supported
         		*/
-        		if($sys_infos['post_type'] && post_type_supports($sys_infos['post_type'], 'page-attributes')){
+        		if($sys_infos['post_type'] && post_type_supports($sys_infos['post_type'], 'page-attributes') || $sys_infos['taxonomy']){
         			wp_enqueue_script('jquery-ui-sortable');
         			wp_enqueue_script('sort-gate', plugin_dir_url( __FILE__ ) .'../assets/js/sortable.js');
         			wp_localize_script('sort-gate', 'SORT', $sys_infos);
@@ -29,16 +31,8 @@
 			/*
 			* On Sorting
 			*/
-			add_action('wp_ajax_update-post-type-order', [$this, 'sorting_system']);
-
-
-			/*
-			* For Sorting, force all post in one line
-			*/
-			add_filter('edit_posts_per_page', function(){
-				if(is_admin())
-					return 999;
-			});
+			add_action('wp_ajax_update-post-type-order', [$this, 'post_type_sorting_system']);
+			add_action('wp_ajax_update-terms-order', [$this, 'terms_sorting_system']);
 
 
 			/*
@@ -53,6 +47,32 @@
 				* Akismet Plugin, post, page, comment, Gutenburg etc.
 				*/
 				$this->remove_basics();
+
+
+
+				/*
+				* For Sorting, force all post on one page
+				*/
+				add_filter('edit_posts_per_page', function(){
+					if(is_admin())
+						return 999;
+				});
+
+				/*
+				* For Sorting Terms, change display
+				
+				add_filter('manage_edit-category_columns', [$this, 'display_terms'], 10);
+				add_filter('manage_edit-category_sortable_columns', [$this, 'display_terms'], 10);
+				add_filter('manage_category_custom_column', function($deprecated,$column_name,$term_id){
+
+					global $wpdb;
+
+					if($column_name === 'term_order'){
+						echo (int)$wpdb->get_results('SELECT * FROM '. $wpdb->prefix .'terms WHERE term_id='.$term_id.' AND term_order')[0]->term_order;
+					}
+
+				}, 10, 3);
+				*/
 			});
 
 
@@ -68,6 +88,7 @@
 
 				// Add menu new elements
 				$this->add_to_top_bar();
+
 			}, 100);
 			
 
@@ -1480,7 +1501,7 @@
 		}
 
 
-		function sorting_system(){
+		function post_type_sorting_system(){
 
 			$post_type = $_POST['post_type'];
 			$new_list = $_POST['new_list'];
@@ -1494,6 +1515,31 @@
 			}
 			
 			exit;
+		}
+
+		function terms_sorting_system(){
+
+			global $wpdb;
+
+			$taxonomy = $_POST['taxonomy'];
+			$new_list = $_POST['new_list'];
+
+         	if(empty($wpdb->get_results($wpdb->prepare("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = %s AND COLUMN_NAME = %s ", $wpdb->prefix.'terms', 'term_order')))){
+				$wpdb->query('ALTER TABLE '. $wpdb->prefix .'terms ADD term_order INT( 4 ) NULL DEFAULT "0"');
+         	}
+
+			foreach($new_list as $item_key => $term_id) {
+				$wpdb->query('UPDATE '. $wpdb->prefix .'terms SET term_order='. ($item_key + 1) .' WHERE term_id='.$term_id);
+			}
+
+			exit;
+		}
+
+		function display_terms($columns){
+			$columns['term_order'] = "term_order";
+
+			//print_r($columns);
+			return $columns;
 		}
 
 	}
