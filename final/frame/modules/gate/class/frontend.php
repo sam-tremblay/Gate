@@ -18,7 +18,7 @@
 			/*
 			* Add Head Sources
 			*/
-			add_action('wp_head', [$this, 'addto_wp_head']);
+			add_action('wp_head', [$this, 'addto_wp_head'], -1);
 
 
 			/*
@@ -27,10 +27,30 @@
 			add_action('wp_footer', function(){
 				// Remove wp-embed
 				wp_deregister_script('wp-embed');
-
-				// Add Footer Sources
-				$this->addto_wp_footer();
 			});
+
+
+			/*
+			* wp_enqueue_script
+			*/
+			add_action('wp_enqueue_scripts', function(){
+
+				// Styles & Script in Head
+				wp_enqueue_style('basics-gate', 'https://cdn.gateforwp.com/V4.1/css/base.min.css', null, null, null);
+				wp_enqueue_style('main-gate', get_bloginfo('stylesheet_directory').'/assets/css/main.min.css', null, null, null);
+				wp_enqueue_script('head-basic-gate', 'https://cdn.gateforwp.com/V4.1/js/head.min.js', null, null, null);
+
+				if(gs::analytics()){
+					wp_enqueue_script('google-analytics', 'https://www.googletagmanager.com/gtag/js?id='. gs::analytics(), null, null, null);
+					wp_add_inline_script('google-analytics', 'window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "'. gs::analytics() .'");', 'after');
+				}
+
+
+				// Scripts in Footer
+				wp_enqueue_script('footer-basic-gate', 'https://cdn.gateforwp.com/V4.1/js/footer.min.js', null, null, true);
+				wp_enqueue_script('main-gate', get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js', null, null, true);
+
+			}, 10);
 
 		}
 
@@ -128,19 +148,6 @@
 				$html .= '<link rel="icon" type="image/png" sizes="16x16" href="'. gs::favicon() .'">';
 				$html .= '<meta name="msapplication-TileColor" content="#0000">';
 			}
-		
-			$html .= '<link rel="stylesheet" type="text/css" href="https://cdn.gateforwp.com/V4.1/css/base.min.css">';
-
-			$html .= '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('stylesheet_directory').'/assets/css/main.min.css">';
-
-			$html .= '<script src="https://cdn.gateforwp.com/V4.1/js/head.min.js"></script>';
-			
-
-
-			if(gs::analytics()){
-				$html .= '<script async src="https://www.googletagmanager.com/gtag/js?id='. gs::analytics() .'"></script>';
-				$html .= '<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "'. gs::analytics() .'");</script>';
-			}
 
 
 			echo $html;
@@ -152,21 +159,6 @@
 				header('location: ' . get_bloginfo('url'));
 				exit;
 			}
-		}
-
-
-		function addto_wp_footer(){
-			
-			$html = '<script src="https://cdn.gateforwp.com/V4.1/js/footer.min.js"></script>';
-			
-
-			$html .= '<script src="'. get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js"></script>';
-
-
-			$html .= '<!-- Développé avec WP Gate - https://gateforwp.com -->';
-
-
-			echo $html;
 		}
 	}
 
