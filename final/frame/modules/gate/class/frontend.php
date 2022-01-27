@@ -18,7 +18,7 @@
 			/*
 			* Add Head Sources
 			*/
-			add_action('wp_head', [$this, 'addto_wp_head'], -1);
+			add_action('wp_head', [$this, 'addto_wp_head'], 1);
 
 
 			/*
@@ -50,7 +50,7 @@
 				wp_enqueue_script('footer-basic-gate', 'https://cdn.gateforwp.com/V4.1/js/footer.min.js', null, null, true);
 				wp_enqueue_script('main-gate', get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js', null, null, true);
 
-			}, 10);
+			}, 2);
 
 		}
 
