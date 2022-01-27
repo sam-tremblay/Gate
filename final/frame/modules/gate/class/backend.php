@@ -32,7 +32,7 @@
 			* On Sorting
 			*/
 			add_action('wp_ajax_update-post-type-order', [$this, 'post_type_sorting_system']);
-			add_action('wp_ajax_update-terms-order', [$this, 'terms_sorting_system']);
+			//add_action('wp_ajax_update-terms-order', [$this, 'terms_sorting_system']);
 
 
 			/*
