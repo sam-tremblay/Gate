@@ -391,6 +391,9 @@ function wp_register_duotone_support( $block_type ) {
  * @return string Duotone CSS filter property.
  */
 function wp_render_duotone_filter_preset( $preset ) {
+	
+	if(!apply_filters('use_block_editor_for_post', false)) return;
+	
 	$duotone_id     = $preset['slug'];
 	$duotone_colors = $preset['colors'];
 	$filter_id      = 'wp-duotone-' . $duotone_id;
