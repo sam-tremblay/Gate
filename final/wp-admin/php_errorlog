@@ -1,0 +1,12 @@
+[04-Nov-2021 06:13:21 UTC] PHP Warning:  require(/home/customer/www/gateforwp.com/public_html/wp-includes/blocks/block.php): failed to open stream: No such file or directory in /home/customer/www/gateforwp.com/public_html/wp-includes/blocks/index.php on line 10
+[04-Nov-2021 06:13:21 UTC] PHP Fatal error:  require(): Failed opening required '/home/customer/www/gateforwp.com/public_html/wp-includes/blocks/block.php' (include_path='.:/usr/local/php74/pear') in /home/customer/www/gateforwp.com/public_html/wp-includes/blocks/index.php on line 10
+[04-Nov-2021 06:21:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function apply_filters() in /home/customer/www/gateforwp.com/public_html/wp-includes/error-protection.php:139
+Stack trace:
+#0 /home/customer/www/gateforwp.com/public_html/wp-includes/error-protection.php(82): wp_is_fatal_error_handler_enabled()
+#1 /home/customer/www/gateforwp.com/public_html/wp-settings.php(64): wp_register_fatal_error_handler()
+#2 /home/customer/www/gateforwp.com/public_html/wp-config.php(70): require_once('/home/customer/...')
+#3 /home/customer/www/gateforwp.com/public_html/wp-load.php(50): require_once('/home/customer/...')
+#4 /home/customer/www/gateforwp.com/public_html/wp-admin/admin.php(34): require_once('/home/customer/...')
+#5 /home/customer/www/gateforwp.com/public_html/wp-admin/index.php(10): require_once('/home/customer/...')
+#6 {main}
+  thrown in /home/customer/www/gateforwp.com/public_html/wp-includes/error-protection.php on line 139
