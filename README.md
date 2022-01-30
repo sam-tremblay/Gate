@@ -40,5 +40,9 @@ MIT
 ## What's planned for version 4.3:
 https://docs.gateforwp.com/communications#v4.3-under-development
 
+## Frequently Asked Questions
+- Can I install other plugins than ACF and WPML
+  - Yes! But you should know that Gate already manages SEO, Google Analytics connection, Custom Post Types and their taxonomies and roles. From these facts, avoid installing plugins that handle these things.
+
 
 **Cheers** 🍻
