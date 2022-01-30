@@ -37,7 +37,7 @@ See documentation here: https://docs.gateforwp.com/
 ## License
 MIT
 
-## What's planned for version 4.3:
+## What's planned in the next version 4.3:
 https://docs.gateforwp.com/communications#v4.3-under-development
 
 ## Frequently Asked Questions
