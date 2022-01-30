@@ -14,8 +14,8 @@ Gate is an open and evolutive project that help devs to start and deliver good W
 - Work with Next Generation of codes with Node and Gulp-babel
 
 
-## Requirements per Gate version
-#### Gate v4.1
+## Minimum requirements per Gate version
+#### Gate v4.1 & v4.2
 | Name | Version |
 | ------ | ------ |
 | Node | 17.0.1 |
@@ -27,9 +27,9 @@ Gate is an open and evolutive project that help devs to start and deliver good W
 npm i
 # Install Gulp globally if has not been done
 npm i gulp -g
-# Start watching
+# Start watching (is not compressing images and fonts)
 gulp
-# Build system, compress fonts & images
+# Build system, compress fonts and images in one time (is not watching)
 gulp prod
 ```
 See documentation here: https://docs.gateforwp.com/
