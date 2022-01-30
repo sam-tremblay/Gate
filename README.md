@@ -5,7 +5,7 @@ Gate is an open and evolutive project that help me to start and deliver good and
 
 ## What can I do with Gate
 - Create animations with Gsap
-- Start Page Transition, start Smooth Scrolling and start Text Animation when appear in screen
+- Start Page Transition, start Smooth Scrolling, start animations based on scroll or when appear in screen
 - Create professional and instinctive Admin Panels
 - Create Custom Post Types and their taxonomies quickly
 - Remove default roles or not and create new ones
