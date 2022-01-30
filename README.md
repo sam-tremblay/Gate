@@ -25,7 +25,7 @@ Gate is an open and evolutive project that help me to start and deliver good and
 ```sh
 # Add node modules
 npm i
-# Install Gulp globally if has not been done
+# Install Gulp globally if has never been done
 npm i gulp -g
 # Start watching (is not compressing images and fonts)
 gulp
