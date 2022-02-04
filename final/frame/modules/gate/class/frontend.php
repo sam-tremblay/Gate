@@ -25,6 +25,7 @@
 			* Manage Footer Sources
 			*/
 			add_action('wp_footer', function(){
+				global $wp_filter;
 				// Remove wp-embed
 				wp_deregister_script('wp-embed');
 				
