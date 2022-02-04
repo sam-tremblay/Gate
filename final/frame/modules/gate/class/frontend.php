@@ -63,7 +63,7 @@
 				// Add Styles & Script in Head
 				wp_enqueue_style('gate-base', plugin_dir_url('gate/gate.php') . 'assets/css/head.min.css', null, null, null);
 				wp_enqueue_style('gate-main', get_bloginfo('stylesheet_directory').'/assets/css/main.min.css', null, null, null);
-				wp_enqueue_script('gate-base', plugin_dir_url('gate/gate.php') . 'assets/js/head.min.js', null, null, null);
+				wp_enqueue_script('gate-head-base', plugin_dir_url('gate/gate.php') . 'assets/js/head.min.js', null, null, null);
 
 				if(gs::analytics()){
 					wp_enqueue_script('google-analytics', 'https://www.googletagmanager.com/gtag/js?id='. gs::analytics(), null, null, null);
