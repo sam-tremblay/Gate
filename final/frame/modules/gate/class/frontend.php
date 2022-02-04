@@ -27,7 +27,25 @@
 			add_action('wp_footer', function(){
 				// Remove wp-embed
 				wp_deregister_script('wp-embed');
-			});
+				
+				
+				/*
+				* Remove Duotone
+				*/
+				if(empty($wp_filter['wp_footer'][10])) return;
+
+				foreach($wp_filter['wp_footer'][10] as $hook) {
+					if(!is_object($hook['function']) || get_class($hook['function']) !== 'Closure') continue;
+
+					$static=(new ReflectionFunction($hook['function']))->getStaticVariables();
+
+					if(empty($static['svg'])) continue;
+
+					if(!str_starts_with($static['svg'],'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" ')) continue;
+
+					remove_action('wp_footer',$hook['function'],10);
+				}
+			}, 1);
 
 
 			/*
