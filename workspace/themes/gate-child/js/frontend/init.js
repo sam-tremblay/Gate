@@ -1,1 +1,0 @@
-$('#pageWrap').gateScroll();
