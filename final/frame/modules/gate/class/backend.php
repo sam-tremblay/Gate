@@ -105,12 +105,8 @@
 			
 
 			/*
-			* Remove Gutenberg Sources
+			* Remove Gutenberg for post type
 			*/
-			add_action('wp_enqueue_scripts', function(){
-				wp_dequeue_style('wp-block-library');
-				wp_dequeue_style('global-styles');
-			}, 100);
 			add_filter('use_block_editor_for_post_type', '__return_false', 10);
 
 

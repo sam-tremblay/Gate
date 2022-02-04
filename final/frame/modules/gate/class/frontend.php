@@ -54,10 +54,16 @@
 			*/
 			add_action('wp_enqueue_scripts', function(){
 
-				// Styles & Script in Head
-				wp_enqueue_style('basics-gate', 'https://cdn.gateforwp.com/V4.1/css/base.min.css', null, null, null);
-				wp_enqueue_style('main-gate', get_bloginfo('stylesheet_directory').'/assets/css/main.min.css', null, null, null);
-				wp_enqueue_script('head-basic-gate', 'https://cdn.gateforwp.com/V4.1/js/head.min.js', null, null, null);
+				/*
+				* Remove Gutenberg Sources
+				*/
+				wp_dequeue_style('wp-block-library');
+				wp_dequeue_style('global-styles');
+
+				// Add Styles & Script in Head
+				wp_enqueue_style('gate-base', plugin_dir_url('gate/gate.php') . 'assets/css/head.min.css', null, null, null);
+				wp_enqueue_style('gate-main', get_bloginfo('stylesheet_directory').'/assets/css/main.min.css', null, null, null);
+				wp_enqueue_script('gate-base', plugin_dir_url('gate/gate.php') . 'assets/js/head.min.js', null, null, null);
 
 				if(gs::analytics()){
 					wp_enqueue_script('google-analytics', 'https://www.googletagmanager.com/gtag/js?id='. gs::analytics(), null, null, null);
@@ -65,11 +71,11 @@
 				}
 
 
-				// Scripts in Footer
-				wp_enqueue_script('footer-basic-gate', 'https://cdn.gateforwp.com/V4.1/js/footer.min.js', null, null, true);
-				wp_enqueue_script('main-gate', get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js', null, null, true);
+				// Add Scripts in Footer
+				wp_enqueue_script('gate-footer-base', plugin_dir_url('gate/gate.php') . 'assets/js/footer.min.js', null, null, true);
+				wp_enqueue_script('gate-main', get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js', null, null, true);
 
-			}, 2);
+			}, 10);
 
 		}
 
