@@ -10,3 +10,6 @@ workspace/wp-config.php
 final/wp-config.php
 
 final/frame/debug.log
+
+final/frame/modules/gate/datas/*
+!final/frame/modules/gate/datas/index.php
