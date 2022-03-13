@@ -11,6 +11,33 @@
 		function __construct(){
 
 			add_action('init', function(){
+
+				/*
+				* If visitor has id set, but no requesters file found
+				*/
+				if($this->visitor_id() && !file_exists($this->requesters_file))
+					unset($_COOKIE['gate_visitor_id']);
+				elseif($this->visitor_id()){
+
+					/*
+					* Get requesters file datas
+					*/
+					$requesters = json_decode(file_get_contents($this->requesters_file));
+
+					/*
+					* If visitor id not found in requesters file
+					*/
+					$found = false;
+					$visitor_id_key = null;
+					foreach ($requesters as $requester) {
+						if($this->visitor_id() === $requester->code)
+							$found = true;
+					}
+
+					if(!$found)
+						unset($_COOKIE['gate_visitor_id']);
+				}
+				
 				if(!$this->visitor_id())
 					$this->create_visitor_id();
 			});
