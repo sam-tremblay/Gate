@@ -28,10 +28,12 @@
 					* If visitor id not found in requesters file
 					*/
 					$found = false;
-					$visitor_id_key = null;
+					
 					foreach ($requesters as $requester) {
-						if($this->visitor_id() === $requester->code)
+						if($this->visitor_id() === $requester->code){
 							$found = true;
+							break;
+						}
 					}
 
 					if(!$found)
