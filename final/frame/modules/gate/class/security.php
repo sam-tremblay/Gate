@@ -139,6 +139,7 @@
 				if($this->visitor_id() === $requester->code){
 					$found = true;
 					$visitor_id_key = $requester_key;
+					break;
 				}
 			}
 
