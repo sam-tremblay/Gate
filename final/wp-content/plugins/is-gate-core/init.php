@@ -32,7 +32,7 @@ if (!class_exists('isGateCORE')){
 				/*
 				* Active ACF Pro
 				*/
-				if(file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') && !is_gate_active('advanced-custom-fields-pro/acf.php'))
+				if(file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') && !is_plugin_active('advanced-custom-fields-pro/acf.php'))
 					activate_plugin('advanced-custom-fields-pro/acf.php');
 				elseif(!file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php')){
 
@@ -58,7 +58,7 @@ if (!class_exists('isGateCORE')){
 				/*
 				* If ACF Pro is deactivated
 				*/
-				if(!file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') || !is_gate_active('advanced-custom-fields-pro/acf.php'))
+				if(!file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') || !is_plugin_active('advanced-custom-fields-pro/acf.php'))
 					deactivate_plugins('is-gate-core/init.php');
 
 
@@ -299,7 +299,7 @@ if (!class_exists('isGateCORE')){
 
 
 					// On ajoute WPML
-					if(is_gate_active('sitepress-multilingual-cms/sitepress.php')){
+					if(is_plugin_active('sitepress-multilingual-cms/sitepress.php')){
 
 						$languages = icl_get_languages('skip_missing=0&orderby=code');
 						
@@ -385,7 +385,7 @@ if (!class_exists('isGateCORE')){
 								'class' => 'gest-string-translation'
 							)
 						);
-						if(is_gate_active('wpml-string-translation/plugin.php'))
+						if(is_plugin_active('wpml-string-translation/plugin.php'))
 							$wp_admin_bar->add_node($args);
 
 

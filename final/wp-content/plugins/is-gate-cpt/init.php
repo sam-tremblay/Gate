@@ -32,7 +32,7 @@ if (!class_exists('isGateCPT')){
 				/*
 				* Active Core Plugin
 				*/
-				if(file_exists(WP_PLUGIN_DIR . '/is-gate-core/init.php') && !is_gate_active('is-gate-core/init.php'))
+				if(file_exists(WP_PLUGIN_DIR . '/is-gate-core/init.php') && !is_plugin_active('is-gate-core/init.php'))
 					activate_plugin('is-gate-core/init.php');
 				elseif(!file_exists(WP_PLUGIN_DIR . '/is-gate-core/init.php')){
 
@@ -41,7 +41,7 @@ if (!class_exists('isGateCPT')){
 					*/
 
 					wp_die(
-						__('L\'extension "Is Plugin Core" est manquante.', 'is-gate-cpt'),
+						__('L\'extension "Gate Core" est manquante.', 'is-gate-cpt'),
 						__('Une erreur est survenue', 'is-gate-cpt'),
 						[
 							'back_link' => true
@@ -57,9 +57,9 @@ if (!class_exists('isGateCPT')){
 			add_action('admin_init', function(){
 
 				/*
-				* If "Is Plugin" is deactivated
+				* If "Gate" is deactivated
 				*/
-				if(!file_exists(WP_PLUGIN_DIR . '/is-gate-core/init.php') || !is_gate_active('is-gate-core/init.php'))
+				if(!file_exists(WP_PLUGIN_DIR . '/is-gate-core/init.php') || !is_plugin_active('is-gate-core/init.php'))
 					deactivate_plugins(plugin_basename(__FILE__));
 
 
