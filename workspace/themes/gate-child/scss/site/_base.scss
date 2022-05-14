@@ -7,14 +7,6 @@
 	&::-webkit-scrollbar {
 		display: none;
 	}
-	&::-moz-selection {
-		background: #000;
-		color: #fff;
-	}
-	&::selection {
-		background: #000;
-		color: #fff;
-	}
 }
 
 html,
@@ -53,35 +45,6 @@ h6{
 
 section{
 	position: relative;
-}
-
-.anim{
-	opacity: 0;
-	transition-property: opacity, transform;
-	transition-duration: 1.4s, 1.4s;
-	//transition-delay: .2s, .2s;
-
-	&.fromLeft{
-		transform: translate(-50px, 0);
-	}
-
-	&.fromRight{
-		transform: translate(50px, 0);
-	}
-
-	&.fromUp{
-		transform: translate(0, -50px);
-	}
-
-	&.fromDown{
-		transform: translate(0, 50px);
-	}
-
-
-	&.is-inview{
-		opacity: 1;
-		transform: translate(0, 0);
-	}
 }
 
 .cbg{

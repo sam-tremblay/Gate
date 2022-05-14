@@ -16,6 +16,10 @@
     @media only screen and (max-width: $break-m) { @content; }
   }
 
+  @if $media == med-large {
+    @media only screen and (max-width: $break-ml) { @content; }
+  }
+
   @if $media == large {
     @media only screen and (max-width: $break-l) { @content; }
   }
