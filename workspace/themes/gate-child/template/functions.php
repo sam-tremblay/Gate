@@ -12,7 +12,7 @@
 		}
 
 		function custom_styles(){
-			include gc::inc('custom-styles.php');
+			//include gc::inc('custom-styles.php');
 		}
 
 		function theme_supports(){
