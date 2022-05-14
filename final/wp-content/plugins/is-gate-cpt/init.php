@@ -16,7 +16,7 @@ Text Domain: is-gate-cpt
 if (!defined('ABSPATH')) exit;
 
 
-if (!defined('IPC_VERSION')) define('IPC_VERSION', '1.0');
+if (!defined('IGC_VERSION')) define('IGC_VERSION', '1.0');
 
 
 if (!class_exists('isGateCPT')){
