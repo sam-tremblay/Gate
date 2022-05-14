@@ -36,9 +36,6 @@ define('NONCE_SALT', 'put your unique phrase here');
 $table_prefix  = 'gate_wp_';
 
 
-// Basic URL
-$base_url  = 'http://projects-x/gate-v4.1/final';
-
 // Afficher les erreurs
 define('WP_DEBUG', false);
 define('WP_DEBUG_LOG', false);
@@ -56,17 +53,6 @@ if ( !defined('ABSPATH') )
 
 // On change le dossier de destination des images
 define('UPLOADS', 'files');
-
-// On change le nom du wp-content
-define ('WP_CONTENT_FOLDERNAME', 'frame');
-// On dicte le chemin du wp-content
-define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/frame' );
-define( 'WP_CONTENT_URL', $base_url . '/frame' );
-
-
-// On dicte le chemin des plugins
-define( 'WP_PLUGIN_DIR', dirname(__FILE__) . '/frame/modules' );
-define( 'WP_PLUGIN_URL', $base_url . '/frame/modules' );
 
 
 /* Réglage des variables de WordPress et de ses fichiers inclus. */
