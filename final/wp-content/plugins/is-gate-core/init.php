@@ -19,8 +19,8 @@ if (!defined('ABSPATH')) exit;
 if (!defined('IGCO_VERSION')) define('IGCO_VERSION', '1.0');
 
 
-if (!class_exists('isPluginCORE')){
-	class isPluginCORE{
+if (!class_exists('isGateCORE')){
+	class isGateCORE{
 
 		function __construct(){
 
@@ -32,7 +32,7 @@ if (!class_exists('isPluginCORE')){
 				/*
 				* Active ACF Pro
 				*/
-				if(file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') && !is_plugin_active('advanced-custom-fields-pro/acf.php'))
+				if(file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') && !is_gate_active('advanced-custom-fields-pro/acf.php'))
 					activate_plugin('advanced-custom-fields-pro/acf.php');
 				elseif(!file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php')){
 
@@ -58,7 +58,7 @@ if (!class_exists('isPluginCORE')){
 				/*
 				* If ACF Pro is deactivated
 				*/
-				if(!file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') || !is_plugin_active('advanced-custom-fields-pro/acf.php'))
+				if(!file_exists(WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php') || !is_gate_active('advanced-custom-fields-pro/acf.php'))
 					deactivate_plugins('is-gate-core/init.php');
 
 
@@ -192,7 +192,7 @@ if (!class_exists('isPluginCORE')){
 					$args = array(
 						'id' => 'is-theme-general-configs',
 						'title' => __('Général', 'is-gate-core'),
-						'href' => $admin_url . 'admin.php?page=is_plugin_settings',
+						'href' => $admin_url . 'admin.php?page=is_gate_settings',
 						'parent' => 'is-theme-dev',
 						'meta' => array(
 							'class' => 'is-theme-general-configs'
@@ -205,13 +205,13 @@ if (!class_exists('isPluginCORE')){
 					$args = array(
 						'id' => 'is-theme-cpt',
 						'title' => __('Custom post types', 'is-gate-core'),
-						'href' => $admin_url . 'edit.php?post_type=is_plugin_cpt',
+						'href' => $admin_url . 'edit.php?post_type=is_gate_cpt',
 						'parent' => 'is-theme-dev',
 						'meta' => array(
 							'class' => 'is-theme-cpt'
 						)
 					);
-					if(class_exists('isPluginCPT'))
+					if(class_exists('isGateCPT'))
 						$wp_admin_bar->add_node($args);
 
 
@@ -219,13 +219,13 @@ if (!class_exists('isPluginCORE')){
 					$args = array(
 						'id' => 'is-theme-roles',
 						'title' => __('Rôles', 'is-gate-core'),
-						'href' => $admin_url . 'edit.php?post_type=is_plugin_role',
+						'href' => $admin_url . 'edit.php?post_type=is_gate_role',
 						'parent' => 'is-theme-dev',
 						'meta' => array(
 							'class' => 'is-theme-roles'
 						)
 					);
-					if(class_exists('isPluginRole'))
+					if(class_exists('isGateRole'))
 						$wp_admin_bar->add_node($args);
 
 
@@ -299,7 +299,7 @@ if (!class_exists('isPluginCORE')){
 
 
 					// On ajoute WPML
-					if(is_plugin_active('sitepress-multilingual-cms/sitepress.php')){
+					if(is_gate_active('sitepress-multilingual-cms/sitepress.php')){
 
 						$languages = icl_get_languages('skip_missing=0&orderby=code');
 						
@@ -385,7 +385,7 @@ if (!class_exists('isPluginCORE')){
 								'class' => 'gest-string-translation'
 							)
 						);
-						if(is_plugin_active('wpml-string-translation/plugin.php'))
+						if(is_gate_active('wpml-string-translation/plugin.php'))
 							$wp_admin_bar->add_node($args);
 
 
@@ -520,7 +520,7 @@ if (!class_exists('isPluginCORE')){
 				/*
 				* Add Custom Styles
 				*/
-				echo '<style type="text/css">#toplevel_page_is_plugin_settings,#toplevel_page_tm-menu-main,#toplevel_page_sitepress-multilingual-cms-menu-setup{display: none !important;}</style>';
+				echo '<style type="text/css">#toplevel_page_is_gate_settings,#toplevel_page_tm-menu-main,#toplevel_page_sitepress-multilingual-cms-menu-setup{display: none !important;}</style>';
 
 			});
 
@@ -533,7 +533,7 @@ if (!class_exists('isPluginCORE')){
 				$option_page = acf_add_options_page(array(
 		            'page_title' => __('Outils de développement', 'is-gate-core'),
 		            'menu_title' => __('Dev', 'is-gate-core'),
-		            'menu_slug' => 'is_plugin_settings',
+		            'menu_slug' => 'is_gate_settings',
 		            'capability' => 'edit_posts',
 		            'redirect' => false
 		        ));
@@ -542,10 +542,10 @@ if (!class_exists('isPluginCORE')){
 		        /*
 		        * Add Field to options page
 		        */
-		        $seo_module = class_exists('isPluginSEO') ? array(
+		        $seo_module = class_exists('isGateSEO') ? array(
 					'key' => 'field_6180d68d95ab1',
 					'label' => 'SEO',
-					'name' => 'is_plugin_seo',
+					'name' => 'is_gate_seo',
 					'type' => 'group',
 					'instructions' => '',
 					'required' => 0,
@@ -742,7 +742,7 @@ if (!class_exists('isPluginCORE')){
 						array(
 							'key' => 'field_6181089b9486b',
 							'label' => 'En construction',
-							'name' => 'is_plugin_in_construction',
+							'name' => 'is_gate_in_construction',
 							'type' => 'select',
 							'instructions' => '',
 							'required' => 0,
@@ -768,7 +768,7 @@ if (!class_exists('isPluginCORE')){
 						array(
 							'key' => 'field_6180d6ca95ab2',
 							'label' => 'Réseaux sociaux',
-							'name' => 'is_plugin_social_network',
+							'name' => 'is_gate_social_network',
 							'type' => 'repeater',
 							'instructions' => '',
 							'required' => 0,
@@ -843,7 +843,7 @@ if (!class_exists('isPluginCORE')){
 						array(
 							'key' => 'field_6180e80274d26',
 							'label' => 'Menus',
-							'name' => 'is_plugin_menu',
+							'name' => 'is_gate_menu',
 							'type' => 'repeater',
 							'instructions' => '',
 							'required' => 0,
@@ -902,7 +902,7 @@ if (!class_exists('isPluginCORE')){
 						array(
 							'key' => 'field_6180fe5742a88sda',
 							'label' => 'Pages d\'options',
-							'name' => 'is_plugin_pages_options',
+							'name' => 'is_gate_pages_options',
 							'type' => 'repeater',
 							'instructions' => '',
 							'required' => 0,
@@ -1040,7 +1040,7 @@ if (!class_exists('isPluginCORE')){
 							array(
 								'param' => 'options_page',
 								'operator' => '==',
-								'value' => 'is_plugin_settings',
+								'value' => 'is_gate_settings',
 							),
 						),
 					),
@@ -1059,8 +1059,8 @@ if (!class_exists('isPluginCORE')){
 				/*
 				* Add Options Pages
 				*/
-				if(get_field('is_plugin_pages_options', 'options')){
-		        	foreach (get_field('is_plugin_pages_options', 'options') as $page) {
+				if(get_field('is_gate_pages_options', 'options')){
+		        	foreach (get_field('is_gate_pages_options', 'options') as $page) {
 		        		$page_title = $page['main_title'];
 		        		$menu_title = !empty($page['menu_title']) ? $page['menu_title'] : $page['main_title'];
 		        		$menu_slug = $page['menu_slug'];
@@ -1085,8 +1085,8 @@ if (!class_exists('isPluginCORE')){
 				* Add Menu Locations
 				*/
 				$location_array = array();
-				if(get_field('is_plugin_menu', 'options')){
-					foreach(get_field('is_plugin_menu', 'options') as $menu){
+				if(get_field('is_gate_menu', 'options')){
+					foreach(get_field('is_gate_menu', 'options') as $menu){
 						$titre = $menu['name'];
 						$slug = $menu['slug'];
 						$location_array[$slug] = $titre;
@@ -1105,7 +1105,7 @@ if (!class_exists('isPluginCORE')){
 				$user = wp_get_current_user();
 				$roleArray = $user->roles;
 				$userRole = isset($roleArray[0]) ? $roleArray[0] : '';
-				if(class_exists('isPluginCORE') && get_field('is_plugin_in_construction', 'options') === 'activate' && !is_front_page() && !in_array($userRole, ['administrator'])){
+				if(class_exists('isGateCORE') && get_field('is_gate_in_construction', 'options') === 'activate' && !is_front_page() && !in_array($userRole, ['administrator'])){
 					header('location: ' . get_bloginfo('url'));
 					exit;
 				}
@@ -1116,7 +1116,7 @@ if (!class_exists('isPluginCORE')){
 
 	}
 
-	new isPluginCORE();
+	new isGateCORE();
 }
 
 ?>
