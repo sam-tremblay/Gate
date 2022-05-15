@@ -107,7 +107,7 @@ class gc{
 		}, 1);
 
 
-		if(!class_exists('isPluginSEO')){
+		if(!class_exists('isGateSEO')){
 			add_action('wp_head', function(){
 
 				$title = get_the_title() . ' - ' . get_bloginfo('name');
@@ -174,10 +174,10 @@ class gc{
 
 	static function sn($format = 'icon'){
 
-		if(in_array($format, ['icon', 'text', 'i-t']) && self::field('is_plugin_social_network')){
+		if(in_array($format, ['icon', 'text', 'i-t']) && self::field('is_gate_social_network')){
 			
 			$result = '<ul>';
-				foreach (self::field('is_plugin_social_network') as $sn) {
+				foreach (self::field('is_gate_social_network') as $sn) {
 
 					$result .= '<li>';
 						if($format === 'icon')

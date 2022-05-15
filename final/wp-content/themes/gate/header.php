@@ -4,4 +4,4 @@
 	<?php wp_head(); ?>
 </head>
 
-<body class="<?= isTheme::current_view_class(); ?>">
+<body class="<?= gc::current_view_class(); ?>">
