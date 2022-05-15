@@ -44,9 +44,14 @@ class gc{
 			/*
 			* Add Styles & Scripts in Head
 			*/
-			wp_enqueue_style('gate-base', get_template_directory_uri().'/assets/css/head.min.css', null, null, null);
+			wp_enqueue_style('gate-font-awesome', get_template_directory_uri().'/assets/css/fontawesome.min.css', null, null, null);
 			wp_enqueue_style('gate-main', get_bloginfo('stylesheet_directory').'/assets/css/main.min.css', null, null, null);
-			wp_enqueue_script('gate-base', get_template_directory_uri().'/assets/js/head.min.js', null, null, null);
+			wp_enqueue_script('gate-jquery', get_template_directory_uri().'/assets/js/jquery.min.js', null, null, null);
+			wp_enqueue_script('gate-jquery-mask', get_template_directory_uri().'/assets/js/jquery.mask.min.js', null, null, null);
+			wp_enqueue_script('gate-gsap-core', get_template_directory_uri().'/assets/js/gsap/gsap.min.js', null, null, null);
+			wp_enqueue_script('gate-gsap-scroll-trigger', get_template_directory_uri().'/assets/js/gsap/ScrollTrigger.min.js', null, null, null);
+			wp_enqueue_script('gate-gsap-scroll-smooter', get_template_directory_uri().'/assets/js/gsap/ScrollSmoother.min.js', null, null, null);
+			wp_enqueue_script('gate-gsap-text-split', get_template_directory_uri().'/assets/js/gsap/SplitText.min.js', null, null, null);
 
 
 			/*
