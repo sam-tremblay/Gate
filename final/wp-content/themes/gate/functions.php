@@ -216,32 +216,6 @@ class gc{
 	}
 
 
-	static function lang($format = null){
-
-		if (!function_exists('icl_get_languages')) return;
-
-		$languages = icl_get_languages('skip_missing=0&orderby=code');
-		
-		$result = '';
-		if($format === 'list'){
-			$result .= '<ul>';
-				foreach($languages as $l){
-					if(!$l['active'])
-						$result .= '<li><a href="'.$l['url'].'">'. $l['native_name'] . '</a></li>';
-				}
-			$result .= '</ul>';
-		} else {
-			foreach($languages as $l){
-				if(!$l['active'])
-					$result .= '<a href="'.$l['url'].'">'. $l['native_name'] . '</a>';
-			}
-		}
-
-
-		return $result;
-	}
-
-
 	static function menu($theme_location = null, $args = []){
 
 		$parameters = array( 

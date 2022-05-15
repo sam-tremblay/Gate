@@ -1,15 +1,26 @@
-<?php get_header();
-	while(have_posts()) : the_post();
-		$coming_path = gc::tp('coming-soon.php');
-		$front_path = gc::tp('front-page.php');
+<?php
+/*
+* Used if you set WordPress to use a static front page.
+*/
 
-		$include = $front_path;
+get_header();
+while(have_posts()) : the_post();
 
 
-		if(gc::field('gate_in_construction') === 'activate')
-			$include = $coming_path;
+	$coming_path = gc::tp('coming-soon.php');
+	$front_path = gc::tp('front-page.php');
 
-		include $include;
+	$include = $front_path;
 
-	endwhile;
-get_footer(); ?>
+
+	$user = wp_get_current_user();
+	$roleArray = $user->roles;
+	$userRole = isset($roleArray[0]) ? $roleArray[0] : '';
+	
+	if(class_exists('isGateCORE') && gc::field('is_plugin_in_construction') === 'activate' && !in_array($userRole, ['administrator']))
+		$include = $coming_path;
+
+
+	include $include;
+
+endwhile; get_footer(); ?>
