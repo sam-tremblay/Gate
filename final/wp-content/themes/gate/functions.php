@@ -90,29 +90,6 @@ class gc{
 		});
 
 
-		add_action('wp_footer', function(){
-			global $wp_filter;
-			
-			
-			/*
-			* Patch for WP 5.9: Remove Duotone
-			*/
-			if(empty($wp_filter['wp_footer'][10])) return;
-
-			foreach($wp_filter['wp_footer'][10] as $hook) {
-				if(!is_object($hook['function']) || get_class($hook['function']) !== 'Closure') continue;
-
-				$static=(new ReflectionFunction($hook['function']))->getStaticVariables();
-
-				if(empty($static['svg'])) continue;
-
-				if(!str_starts_with($static['svg'],'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" ')) continue;
-
-				remove_action('wp_footer',$hook['function'],10);
-			}
-		}, 1);
-
-
 		if(!class_exists('isGateSEO')){
 			add_action('wp_head', function(){
 
