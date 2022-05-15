@@ -13,4 +13,6 @@ This installation of WordPress based on NodeJS, Gulp and a mind for the custom m
 >- We pushed major updates with a new mind for Gate. How the Gulp Structure work has changed, idem for our parent theme and our Gate plugin has been replaced by a collection of plugins to let you set up what you really need.
 >
 > #### Documentation
->See the docs for links and more informations: https://docu.gateforwp.com/
+>See the v4.3 docs for links and more informations: https://docu.gateforwp.com/
+>
+>Docs for v4.2 is here: https://docs.gateforwp.com/
