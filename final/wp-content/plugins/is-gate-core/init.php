@@ -111,7 +111,7 @@ if (!class_exists('isGateCORE')){
 				$args = array(
 					'id' => 'goto-website',
 					'title' => get_bloginfo('name'),
-					'href' => $site_url,
+					'href' => get_bloginfo('url'),
 					'target' => '_blank',
 					'meta' => array(
 						'class' => 'goto-website',
