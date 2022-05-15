@@ -74,7 +74,7 @@ if (!class_exists('isGateROLE')){
 				*/
 				$get = isset($_GET['role']) ? $_GET['role'] : null;
 
-				if($get === 'reset'){
+				if($get === 'reset' && current_user_can('manage_options')){
 
 					$all_roles = $wp_roles->roles;
 					$no_reset = [
