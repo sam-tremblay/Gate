@@ -1,10 +1,15 @@
 @charset "UTF-8";
+
 /*
-Theme Name: Gate
-Theme URI: https://gateforwp.com
-Author: deuxparquatre inc.
-Author URI: https://deuxparquatre.com/
-Description: Thème mère
-Version: 4.2
-Text Domain: gparent
+Theme Name: Gate Theme
+Author: Sam Tremblay
+Author URI: https://sam-tremblay.com
+Description: Un thème blanc pour des WordPress professionnels sans Gutenberg/FSE
+Requires at least: 5.9
+Tested up to: 5.9
+Requires PHP: 7.3
+Version: 1.0
+License: MIT License
+License URI: https://github.com/sam-tremblay/Gate/blob/master/LICENSE
+Text Domain: gate-theme
 */
