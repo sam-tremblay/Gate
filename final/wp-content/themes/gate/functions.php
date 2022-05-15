@@ -52,7 +52,8 @@ class gc{
 			/*
 			* Add Scripts in Footer
 			*/
-			wp_enqueue_script('gate-main', get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js', null, null, true);
+			if(file_exists(get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js'))
+				wp_enqueue_script('gate-main', get_bloginfo('stylesheet_directory') .'/assets/js/main.min.js', null, null, true);
 
 		}, 10);
 
