@@ -40,6 +40,9 @@ if (!class_exists('isGateUpdater')){
 
 				if(file_exists(WP_PLUGIN_DIR . '/is-gate-seo/init.php') && is_plugin_active('is-gate-seo/init.php'))
 					include_once 'updaters/seo.php';
+
+				if(file_exists(WP_PLUGIN_DIR . '/is-gate-security/init.php') && is_plugin_active('is-gate-security/init.php'))
+					include_once 'updaters/security.php';
 			});
 
 			/*
