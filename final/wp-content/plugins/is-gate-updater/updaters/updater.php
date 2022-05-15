@@ -11,7 +11,7 @@ if(!class_exists('isGateUpdaterTHIS')) {
 		public function __construct() {
 
 			$this->plugin_slug = plugin_basename('is-gate-updater');
-			$this->version = IPU_VERSION;
+			$this->version = IGU_VERSION;
 			$this->cache_key = 'igu_version';
 			$this->cache_allowed = false;
 

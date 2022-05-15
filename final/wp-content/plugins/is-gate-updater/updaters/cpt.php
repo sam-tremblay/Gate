@@ -11,7 +11,7 @@ if(!class_exists('isGateUpdaterCPT')) {
 		public function __construct() {
 
 			$this->plugin_slug = plugin_basename('is-gate-cpt');
-			$this->version = IPC_VERSION;
+			$this->version = IGC_VERSION;
 			$this->cache_key = 'igc_version';
 			$this->cache_allowed = false;
 

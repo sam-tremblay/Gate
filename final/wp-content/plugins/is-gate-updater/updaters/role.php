@@ -11,7 +11,7 @@ if(!class_exists('isGateUpdaterROLE')) {
 		public function __construct() {
 
 			$this->plugin_slug = plugin_basename('is-gate-role');
-			$this->version = IPR_VERSION;
+			$this->version = IGR_VERSION;
 			$this->cache_key = 'igr_version';
 			$this->cache_allowed = false;
 

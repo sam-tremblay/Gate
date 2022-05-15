@@ -11,7 +11,7 @@ if(!class_exists('isGateUpdaterCORE')) {
 		public function __construct() {
 
 			$this->plugin_slug = plugin_basename('is-gate-core');
-			$this->version = IPCO_VERSION;
+			$this->version = IGCO_VERSION;
 			$this->cache_key = 'igco_version';
 			$this->cache_allowed = false;
 

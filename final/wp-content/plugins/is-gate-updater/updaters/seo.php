@@ -11,7 +11,7 @@ if(!class_exists('isGateUpdaterSEO')) {
 		public function __construct() {
 
 			$this->plugin_slug = plugin_basename('is-gate-seo');
-			$this->version = IPS_VERSION;
+			$this->version = IGS_VERSION;
 			$this->cache_key = 'igs_version';
 			$this->cache_allowed = false;
 
